@@ -1,6 +1,7 @@
 import { removeComment } from './session';
 import { ROLE } from '../constants/role';
 
+//Добавляем сессии согласно роли
 export const createSession = (roleId) => {
 	const session = {
 		logout() {
