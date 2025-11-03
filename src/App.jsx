@@ -7,5 +7,10 @@ const Div = styled.div`
 `;
 
 export const App = () => {
-	return <Div>Блог о веб-разработке</Div>;
+	return (
+		<Div>
+			<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+			<div>Блог о веб-разработке</div>
+		</Div>
+	);
 };

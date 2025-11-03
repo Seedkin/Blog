@@ -1,3 +1,6 @@
+/* Подключение иконок */
+@import url('fonts/css/font-awesome.css');
+
 * {
 	box-sizing: border-box;
 }
