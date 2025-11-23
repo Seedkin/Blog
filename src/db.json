@@ -2,10 +2,10 @@
 	"users": [
 		{
 			"id": "01",
-			"login": "andrey",
-			"password": "qwerty123",
+			"login": "test",
+			"password": "qwerty",
 			"registed_at": "2050-09-22",
-			"role_id": ""
+			"role_id": 0
 		}
 	],
 	"roles": [
