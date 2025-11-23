@@ -41,17 +41,17 @@ export const server = {
 
 	//Регистрация
 	async register(regLogin, regPassword) {
-		const user = getUser(regLogin);
+		const existedUser = await getUser(regLogin);
 
 		//Если найден то возвращаем ошибку
-		if (user) {
+		if (existedUser) {
 			return {
 				error: 'Такой логин уже занят',
 				res: null,
 			};
 		}
 		//Создание пользователя
-		await addUser(regLogin, regPassword);
+		const user = await addUser(regLogin, regPassword);
 
 		return {
 			error: null,
