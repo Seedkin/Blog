@@ -16,12 +16,6 @@ const RightAligned = styled.div`
 	align-items: center;
 `;
 
-const StyledIcon = styled.div`
-	&:hover {
-		cursor: pointer;
-	}
-`;
-
 const StyledLoguotIcon = styled.div`
 	height: 32px;
 	display: flex;
@@ -65,9 +59,7 @@ const ContralPanelContainer = ({ className }) => {
 				)}
 			</RightAligned>
 			<RightAligned>
-				<StyledIcon onClick={() => navigate(-1)}>
-					<Icon id="fa-backward" margin="10px 0 0 0" />
-				</StyledIcon>
+				<Icon id="fa-backward" margin="10px 0 0 0" onClick={() => navigate(-1)} />
 				<Link to="/post">
 					<Icon id="fa-file-text-o" margin="10px 0 0 16px" />
 				</Link>
