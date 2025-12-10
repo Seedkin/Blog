@@ -1,23 +1,25 @@
-import { sessions } from '../sessions';
-import { getUsers } from '../api';
-import { ROLE } from '../constants';
+import { sessions } from '../sessions'
+import { getUsers } from '../api'
+import { ROLE } from '../constants'
 
 // Cетевой запрос ролей
-export const fetchUsers = async (userSession) => {
-	const accessRoles = [ROLE.ADMIN];
+export const fetchUsers = async (hash) => {
+	const accessRoles = [ROLE.ADMIN]
+
+	const access = await sessions.access(hash, accessRoles)
 
 	//Проверка на наличие доступа
-	if (!sessions.access(userSession, accessRoles)) {
+	if (!access) {
 		return {
 			error: 'Доступ запрещен',
 			res: null,
-		};
+		}
 	}
 	//Запрос ролей
-	const users = await getUsers();
-
+	const users = await getUsers()
+	console.log(users)
 	return {
 		error: null,
 		res: users,
-	};
-};
+	}
+}

@@ -1,20 +1,16 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { Icon, Button } from '../../../../components';
-import styled from 'styled-components';
-import { ROLE } from '../../../../constants/role';
-import {
-	selectUserRole,
-	selectUserLogin,
-	selectUserSession,
-} from '../../../../selectors';
-import { logout } from '../../../../actions';
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { Icon, Button } from '../../../../components'
+import styled from 'styled-components'
+import { ROLE } from '../../../../constants/role'
+import { selectUserRole, selectUserLogin, selectUserSession } from '../../../../selectors'
+import { logout } from '../../../../actions'
 
 const RightAligned = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-`;
+`
 
 const StyledLoguotIcon = styled.div`
 	height: 32px;
@@ -24,19 +20,24 @@ const StyledLoguotIcon = styled.div`
 	&:hover {
 		cursor: pointer;
 	}
-`;
+`
 
 const UserName = styled.div`
 	font-size: 18px;
 	font-weight: bold;
-`;
+`
 
 const ContralPanelContainer = ({ className }) => {
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-	const roleId = useSelector(selectUserRole);
-	const login = useSelector(selectUserLogin);
-	const session = useSelector(selectUserSession);
+	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const roleId = useSelector(selectUserRole)
+	const login = useSelector(selectUserLogin)
+	const session = useSelector(selectUserSession)
+
+	const onLogout = () => {
+		dispatch(logout(session))
+		sessionStorage.removeItem('userData')
+	}
 
 	return (
 		<div className={className}>
@@ -52,7 +53,7 @@ const ContralPanelContainer = ({ className }) => {
 							<Icon
 								id="fa-sign-out"
 								margin=" 0 0 0 10px"
-								onClick={() => dispatch(logout(session))}
+								onClick={onLogout}
 							/>
 						</StyledLoguotIcon>
 					</>
@@ -68,7 +69,7 @@ const ContralPanelContainer = ({ className }) => {
 				</Link>
 			</RightAligned>
 		</div>
-	);
-};
+	)
+}
 
-export const ControlPanel = styled(ContralPanelContainer)``;
+export const ControlPanel = styled(ContralPanelContainer)``

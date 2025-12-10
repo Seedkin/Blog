@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { Navigate } from 'react-router-dom';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { server } from '../../bff';
-import { Input, Button, H2, AuthFormError } from '../../components';
-import { useResetForm } from '../../hooks';
-import { setUser } from '../../actions';
-import { selectUserRole } from '../../selectors';
-import styled from 'styled-components';
-import { ROLE } from '../../constants/role';
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useForm } from 'react-hook-form'
+import { Navigate } from 'react-router-dom'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { server } from '../../bff'
+import { Input, Button, H2, AuthFormError } from '../../components'
+import { useResetForm } from '../../hooks'
+import { setUser } from '../../actions'
+import { selectUserRole } from '../../selectors'
+import styled from 'styled-components'
+import { ROLE } from '../../constants/role'
 
 const regFormSchema = yup.object().shape({
 	login: yup
@@ -32,7 +32,7 @@ const regFormSchema = yup.object().shape({
 		.string()
 		.required('Заполните повтор пароля')
 		.oneOf([yup.ref('password'), null], 'Повтор пароля не совпадает'),
-});
+})
 
 const RegistrationContainer = ({ className }) => {
 	const {
@@ -47,34 +47,35 @@ const RegistrationContainer = ({ className }) => {
 			passcheck: '',
 		},
 		resolver: yupResolver(regFormSchema),
-	});
+	})
 
-	const [serverError, setServerError] = useState(null);
+	const [serverError, setServerError] = useState(null)
 
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
-	const roleId = useSelector(selectUserRole);
+	const roleId = useSelector(selectUserRole)
 
-	useResetForm(reset);
+	useResetForm(reset)
 
 	const onSubmit = ({ login, password }) => {
 		server.register(login, password).then(({ error, res }) => {
 			//Проверка на ошибку
 			if (error) {
-				setServerError(`Ошибка запроса: ${error}`);
-				return;
+				setServerError(`Ошибка запроса: ${error}`)
+				return
 			}
-			dispatch(setUser(res));
-		});
-	};
+			dispatch(setUser(res))
+			sessionStorage.setItem('userData', JSON.stringify(res))
+		})
+	}
 
 	const formError =
-		errors?.login?.message || errors?.password?.message || errors?.passcheck?.message;
-	const errorMessage = formError || serverError;
+		errors?.login?.message || errors?.password?.message || errors?.passcheck?.message
+	const errorMessage = formError || serverError
 
 	if (roleId !== ROLE.GUEST) {
 		//Переход на главную страницу после авторизации
-		return <Navigate to="/" />;
+		return <Navigate to="/" />
 	}
 
 	return (
@@ -108,8 +109,8 @@ const RegistrationContainer = ({ className }) => {
 				{errorMessage && <AuthFormError>{errorMessage}</AuthFormError>}
 			</form>
 		</div>
-	);
-};
+	)
+}
 
 export const Registration = styled(RegistrationContainer)`
 	display: flex;
@@ -121,4 +122,4 @@ export const Registration = styled(RegistrationContainer)`
 		flex-direction: column;
 		width: 260px;
 	}
-`;
+`

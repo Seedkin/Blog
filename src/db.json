@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "01",
-      "login": "test",
+      "login": "andrey",
       "password": "qwerty",
       "registed_at": "2050-09-22",
       "role_id": 0
@@ -105,5 +105,72 @@
       "published_at": "2030-01-09"
     }
   ],
-  "comments": []
+  "comments": [
+    {
+      "author_id": "01",
+      "post_id": "001",
+      "published_at": "2056-02-11 17:43",
+      "content": "Мой первый комментарий",
+      "id": 1
+    },
+    {
+      "author_id": "01",
+      "post_id": "001",
+      "published_at": "2036-11-08 20:52",
+      "content": "цуйцуйцуй",
+      "id": 2
+    },
+    {
+      "author_id": "01",
+      "post_id": "001",
+      "published_at": "2036-08-19 23:39",
+      "content": "сцсцайка321йкацуйа",
+      "id": 3
+    },
+    {
+      "author_id": "01",
+      "post_id": "001",
+      "published_at": "2034-07-04 20:00",
+      "content": "weqwe",
+      "id": 4
+    },
+    {
+      "author_id": "01",
+      "post_id": "001",
+      "published_at": "2039-11-06 04:58",
+      "content": "",
+      "id": 5
+    },
+    {
+      "author_id": "01",
+      "post_id": "001",
+      "published_at": "2040-08-02 12:33",
+      "content": "rewrwer rwerwerw",
+      "id": 6
+    }
+  ],
+  "sessions": [
+    {
+      "hash": "0.01796923772248937289930381666636094450950622558594",
+      "user": {
+        "id": "01",
+        "login": "andrey",
+        "password": "qwerty",
+        "registeredAt": "2050-09-22",
+        "roleId": 0
+      },
+      "id": 1
+    },
+    {
+      "hash": "0.35324508617850525205028588970890268683433532714844",
+      "user": {
+        "id": "01",
+        "login": "andrey",
+        "password": "qwerty",
+        "registeredAt": "2050-09-22",
+        "roleId": 0
+      },
+      "id": 2
+    }
+  ]
 }

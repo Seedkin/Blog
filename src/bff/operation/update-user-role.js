@@ -1,22 +1,24 @@
-import { setUserRole } from '../api';
-import { ROLE } from '../constants';
-import { sessions } from '../sessions';
+import { setUserRole } from '../api'
+import { ROLE } from '../constants'
+import { sessions } from '../sessions'
 
-export const updateUserRole = async (userSession, userId, newUserRoleId) => {
-	const accessRoles = [ROLE.ADMIN];
+export const updateUserRole = async (hash, userId, newUserRoleId) => {
+	const accessRoles = [ROLE.ADMIN]
+
+	const access = await sessions.access(hash, accessRoles)
 
 	//Проверка на наличие доступа
-	if (!sessions.access(userSession, accessRoles)) {
+	if (!access) {
 		return {
 			error: 'Доступ запрещен',
 			res: null,
-		};
+		}
 	}
 
-	setUserRole(userId, newUserRoleId);
+	setUserRole(userId, newUserRoleId)
 
 	return {
 		error: null,
 		res: true,
-	};
-};
+	}
+}

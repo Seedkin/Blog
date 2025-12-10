@@ -1,9 +1,9 @@
-import { ControlPanel, Logo } from './components';
-import styled from 'styled-components';
+import { ControlPanel, Logo } from './components'
+import styled from 'styled-components'
 
 const Discription = styled.div`
 	font-style: italic;
-`;
+`
 
 const HeaderContainer = ({ className }) => (
 	<header className={className}>
@@ -17,7 +17,7 @@ const HeaderContainer = ({ className }) => (
 		</Discription>
 		<ControlPanel />
 	</header>
-);
+)
 
 export const Header = styled(HeaderContainer)`
 	display: flex;
@@ -29,4 +29,5 @@ export const Header = styled(HeaderContainer)`
 	padding: 20px 40px;
 	box-shadow: 0 -2px 17px #000;
 	background-color: #fff;
-`;
+	z-index: 10;
+`
