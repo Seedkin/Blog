@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Icon } from '../../../../components';
-import { TableRow } from '../table-row/table-row';
-import { useServerRequest } from '../../../../hooks';
-import styled from 'styled-components';
+import { useState } from 'react'
+import { Icon } from '../../../../components'
+import { TableRow } from '../table-row/table-row'
+import { useServerRequest } from '../../../../hooks'
+import styled from 'styled-components'
 
 const UserRowContainer = ({
 	className,
@@ -13,21 +13,21 @@ const UserRowContainer = ({
 	roles,
 	onUserRemove,
 }) => {
-	const [initialRoleId, setInitialRoleId] = useState(userRoleId);
-	const [selectedRoleId, setSelectedRoleId] = useState(userRoleId);
-	const requestServer = useServerRequest();
+	const [initialRoleId, setInitialRoleId] = useState(userRoleId)
+	const [selectedRoleId, setSelectedRoleId] = useState(userRoleId)
+	const requestServer = useServerRequest()
 
 	const onRoleChange = ({ target }) => {
-		setSelectedRoleId(Number(target.value));
-	};
+		setSelectedRoleId(Number(target.value))
+	}
 
 	const onRoleSave = (userId, newUserRoleId) => {
 		requestServer('updateUserRole', userId, newUserRoleId).then(() => {
-			setInitialRoleId(newUserRoleId);
-		});
-	};
+			setInitialRoleId(newUserRoleId)
+		})
+	}
 
-	const isSaveButtonDisabled = selectedRoleId === initialRoleId;
+	const isSaveButtonDisabled = selectedRoleId === initialRoleId
 
 	return (
 		<div className={className}>
@@ -54,8 +54,8 @@ const UserRowContainer = ({
 			</TableRow>
 			<Icon id="fa-trash-o" margin=" 0 0 0 10px" onClick={onUserRemove} />
 		</div>
-	);
-};
+	)
+}
 
 export const UserRow = styled(UserRowContainer)`
 	display: flex;
@@ -66,4 +66,4 @@ export const UserRow = styled(UserRowContainer)`
 		font-size: 15px;
 		padding: 0 5px;
 	}
-`;
+`
