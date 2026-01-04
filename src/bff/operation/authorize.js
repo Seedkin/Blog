@@ -22,7 +22,6 @@ export const authorize = async (authLogin, authPassword) => {
 			res: null,
 		}
 	}
-	console.log(user)
 	return {
 		error: null,
 		res: {

@@ -17,7 +17,6 @@ export const fetchUsers = async (hash) => {
 	}
 	//Запрос ролей
 	const users = await getUsers()
-	console.log(users)
 	return {
 		error: null,
 		res: users,

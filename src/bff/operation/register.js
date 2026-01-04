@@ -14,7 +14,6 @@ export const register = async (regLogin, regPassword) => {
 	}
 	//Создание пользователя
 	const user = await addUser(regLogin, regPassword)
-	console.log(user)
 	return {
 		error: null,
 		res: {
