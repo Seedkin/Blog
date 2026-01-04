@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const ButtonContainer = ({ children, className, ...props }) => {
 	return (
 		<button className={className} {...props}>
 			{children}
 		</button>
-	);
-};
+	)
+}
 
 export const Button = styled(ButtonContainer)`
 	display: flex;
@@ -19,6 +19,6 @@ export const Button = styled(ButtonContainer)`
 	background-color: #eee;
 
 	&:hover {
-		cursor: pointer;
+		cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 	}
-`;
+`
