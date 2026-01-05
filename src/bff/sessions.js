@@ -22,6 +22,6 @@ export const sessions = {
 		const dbSession = await getSession(hash)
 
 		//Проверка наличия пользователя и его роль
-		return !!dbSession.user && accessRoles.includes(dbSession.user.roleId)
+		return !!dbSession?.user && accessRoles.includes(dbSession.user.roleId)
 	},
 }
