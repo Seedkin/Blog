@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Icon } from '../../../../../../components'
 import { openModal, CLOSE_MODAL, removeCommentAsync } from '../../../../../../actions'
@@ -89,3 +90,10 @@ export const Comment = styled(CommentContainer)`
 		display: flex;
 	}
 `
+Comment.propTypes = {
+	postId: PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
+	author: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+}
