@@ -1,10 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { Icon, Button } from '../../../../components'
-import styled from 'styled-components'
 import { ROLE } from '../../../../constants/role'
 import { selectUserRole, selectUserLogin, selectUserSession } from '../../../../selectors'
 import { logout } from '../../../../actions'
+import { checkAcces } from '../../../../utils'
+import styled from 'styled-components'
 
 const RightAligned = styled.div`
 	display: flex;
@@ -39,6 +40,8 @@ const ContralPanelContainer = ({ className }) => {
 		sessionStorage.removeItem('userData')
 	}
 
+	const isAdmin = checkAcces([ROLE.ADMIN], roleId)
+
 	return (
 		<div className={className}>
 			<RightAligned>
@@ -61,12 +64,16 @@ const ContralPanelContainer = ({ className }) => {
 			</RightAligned>
 			<RightAligned>
 				<Icon id="fa-backward" margin="10px 0 0 0" onClick={() => navigate(-1)} />
-				<Link to="/post">
-					<Icon id="fa-file-text-o" margin="10px 0 0 16px" />
-				</Link>
-				<Link to="/users">
-					<Icon id="fa-users" margin="10px 0 0 16px" />
-				</Link>
+				{isAdmin && (
+					<>
+						<Link to="/post">
+							<Icon id="fa-file-text-o" margin="10px 0 0 16px" />
+						</Link>
+						<Link to="/users">
+							<Icon id="fa-users" margin="10px 0 0 16px" />
+						</Link>
+					</>
+				)}
 			</RightAligned>
 		</div>
 	)
