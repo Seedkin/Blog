@@ -1,13 +1,12 @@
 import { useLayoutEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { Error, Header, Footer, Modal } from './components'
 import { Authorization, Registration, Users, Post, Main } from './pages'
+import { Error, Header, Footer, Modal } from './components'
 import { setUser } from './actions'
 import { ERROR } from './constants'
 import styled from 'styled-components'
 
-//npx json-server@0.17.4 --watch db.json
 //npx json-server@0.17.4 --watch src/db.json --port 3005
 
 const AppColumn = styled.div`
